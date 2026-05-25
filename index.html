@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FILXER MADE IT | Mix & Master Services</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      font-family:'Montserrat',sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND */
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 20% 30%, rgba(255,80,0,.35), transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(0,140,255,.35), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(255,0,200,.25), transparent 30%),
+      #050505;
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      opacity:.15;
+      z-index:-1;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:60px 20px;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:1200px;
+      transform-style:preserve-3d;
+      animation:float 5s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{ transform:translateY(0px);}
+      50%{ transform:translateY(-12px);}
+    }
+
+    .top-badge{
+      display:inline-block;
+      padding:10px 20px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,.05);
+      margin-bottom:30px;
+      box-shadow:0 0 20px rgba(255,0,255,.3);
+    }
+
+    h1{
+      font-family:'Anton',sans-serif;
+      font-size:clamp(4rem,10vw,9rem);
+      line-height:0.9;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      /* Toned-down: solid white with a soft purple-pink hint — fully readable */
+      color:#f0eaff;
+      -webkit-text-fill-color:#f0eaff;
+      text-shadow:
+        0 0 30px rgba(200,100,255,.25),
+        0 0 60px rgba(0,140,255,.15);
+    }
+
+    .glow{
+      color:#00c3ff;
+      -webkit-text-fill-color:#00c3ff;
+      text-shadow:
+      0 0 10px rgba(0,195,255,.5),
+      0 0 25px rgba(0,195,255,.3);
+    }
+
+    .subtitle{
+      margin-top:30px;
+      font-size:1.2rem;
+      color:#d5d5d5;
+      max-width:700px;
+      margin-inline:auto;
+      line-height:1.7;
+    }
+
+    .cta{
+      margin-top:40px;
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:18px 35px;
+      border:none;
+      border-radius:16px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.3s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#ff00c8,#7a5cff);
+      color:white;
+      box-shadow:0 0 25px rgba(255,0,200,.5);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.05);
+      color:white;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn:hover{
+      transform:translateY(-4px) scale(1.03);
+    }
+
+    /* SERVICES */
+
+    .section{
+      padding:120px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-family:'Anton',sans-serif;
+      font-size:4rem;
+      margin-bottom:70px;
+      letter-spacing:2px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
+    }
+
+    .card{
+      position:relative;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:30px;
+      padding:40px 30px;
+      backdrop-filter:blur(15px);
+      transition:.4s;
+      overflow:hidden;
+      transform-style:preserve-3d;
+      box-shadow:
+      0 0 25px rgba(255,0,150,.12),
+      0 0 50px rgba(0,140,255,.08);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(135deg,#ff4d00,#ff00ea,#0066ff);
+      z-index:-1;
+      border-radius:30px;
+      opacity:0;
+      transition:.4s;
+    }
+
+    .card:hover::before{
+      opacity:1;
+    }
+
+    .card:hover{
+      transform:translateY(-15px) rotateX(5deg);
+    }
+
+    .popular{
+      transform:scale(1.05);
+      border:2px solid #ff00c8;
+      box-shadow:0 0 40px rgba(255,0,200,.35);
+    }
+
+    .tag{
+      position:absolute;
+      top:20px;
+      right:20px;
+      background:#ff00c8;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      box-shadow:0 0 20px rgba(255,0,200,.5);
+    }
+
+    .plan{
+      font-size:2.2rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .price{
+      font-family:'Anton',sans-serif;
+      font-size:5rem;
+      margin-bottom:25px;
+      background:linear-gradient(180deg,#fff,#00c3ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .features{
+      list-style:none;
+      margin-bottom:35px;
+    }
+
+    .features li{
+      margin-bottom:15px;
+      color:#e5e5e5;
+    }
+
+    /* ORDER NOW button wrapped in <a> */
+    .buy-link{
+      display:block;
+      text-decoration:none;
+    }
+
+    .buy-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ff5f00,#ff00c8);
+      color:white;
+      font-weight:800;
+      font-size:1rem;
+      cursor:pointer;
+      transition:.3s;
+      box-shadow:0 0 25px rgba(255,0,200,.4);
+    }
+
+    .buy-btn:hover{
+      transform:scale(1.04);
+    }
+
+    /* PAYMENT */
+
+    .payments{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-top:40px;
+    }
+
+    .payment-box{
+      padding:18px 30px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .payment-box:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 25px rgba(0,140,255,.3);
+    }
+
+    /* QNA */
+
+    .faq{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .faq-item{
+      margin-bottom:20px;
+      border-radius:20px;
+      overflow:hidden;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .faq-question{
+      padding:25px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:1.1rem;
+      position:relative;
+    }
+
+    .faq-answer{
+      padding:0 25px 25px;
+      color:#d5d5d5;
+      line-height:1.7;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:60px 20px;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:100px;
+    }
+
+    .insta{
+      color:#ff00c8;
+      font-weight:800;
+      text-decoration:none;
+    }
+
+    .insta:hover{
+      text-shadow:0 0 15px #ff00c8;
+    }
+
+    @media(max-width:768px){
+
+      .section-title{
+        font-size:3rem;
+      }
+
+      .price{
+        font-size:4rem;
+      }
+
+      .popular{
+        transform:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="top-badge">
+        PROFESSIONAL MIXING & MASTERING
+      </div>
+
+      <h1>
+        MIX & MASTER<br>
+        <span class="glow">SERVICES</span>
+      </h1>
+
+      <p class="subtitle">
+        Professional industry-standard mixing and mastering for artists who want loud,
+        clean and modern sound. Fast delivery, premium quality and cinematic vibes.
+      </p>
+
+      <div class="cta">
+        <a href="#pricing" class="btn btn-primary">VIEW PRICING</a>
+
+        <a 
+          href="https://www.instagram.com/filxermadeit/" 
+          target="_blank"
+          class="btn btn-secondary">
+          DM @filxermadeit
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section class="section" id="pricing">
+
+    <h2 class="section-title">
+      PACKAGES
+    </h2>
+
+    <div class="cards">
+
+      <!-- BASIC -->
+
+      <div class="card">
+
+        <div class="plan">Basic</div>
+
+        <div class="price">10€</div>
+
+        <ul class="features">
+          <li>✔ Professional Mixing</li>
+          <li>✔ Loud & Clean Sound</li>
+          <li>✔ Stereo Balance</li>
+          <li>✔ Fast Delivery</li>
+        </ul>
+
+        <a href="https://www.instagram.com/filxermadeit/" target="_blank" class="buy-link">
+          <button class="buy-btn">ORDER NOW</button>
+        </a>
+
+      </div>
+
+      <!-- PRO -->
+
+      <div class="card popular">
+
+        <div class="tag">
+          MOST POPULAR
+        </div>
+
+        <div class="plan">Pro</div>
+
+        <div class="price">15€</div>
+
+        <ul class="features">
+          <li>✔ Mixing & Mastering</li>
+          <li>✔ Industry Standard Sound</li>
+          <li>✔ Punchy & Wide Mix</li>
+          <li>✔ Streaming Ready</li>
+          <li>✔ Fast Delivery</li>
+        </ul>
+
+        <a href="https://www.instagram.com/filxermadeit/" target="_blank" class="buy-link">
+          <button class="buy-btn">ORDER NOW</button>
+        </a>
+
+      </div>
+
+      <!-- PREMIUM -->
+
+      <div class="card">
+
+        <div class="plan">Premium</div>
+
+        <div class="price">25€</div>
+
+        <ul class="features">
+          <li>✔ Mixing & Mastering</li>
+          <li>✔ 2 Promo Videos</li>
+          <li>✔ Premium FX Processing</li>
+          <li>✔ Cinematic Sound Quality</li>
+          <li>✔ Priority Delivery</li>
+        </ul>
+
+        <a href="https://www.instagram.com/filxermadeit/" target="_blank" class="buy-link">
+          <button class="buy-btn">ORDER NOW</button>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PAYMENT -->
+
+  <section class="section">
+
+    <h2 class="section-title">
+      PAYMENT METHODS
+    </h2>
+
+    <div class="payments">
+
+      <div class="payment-box">
+        PayPal
+      </div>
+
+      <div class="payment-box">
+        PaySafe Card
+      </div>
+
+      <div class="payment-box">
+        Iris
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+
+  <section class="section">
+
+    <h2 class="section-title">
+      Q & A
+    </h2>
+
+    <div class="faq">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How long does delivery take?
+        </div>
+
+        <div class="faq-answer">
+          Usually within 24-72 hours depending on the project complexity.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What files should I send?
+        </div>
+
+        <div class="faq-answer">
+          Send WAV stems or high quality audio exports for the best results.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I contact you?
+        </div>
+
+        <div class="faq-answer">
+          DM me on Instagram:
+          <a 
+            class="insta"
+            target="_blank"
+            href="https://www.instagram.com/filxermadeit/">
+            @filxermadeit
+          </a>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you offer revisions?
+        </div>
+
+        <div class="faq-answer">
+          Yes — revisions are included to make sure you are fully satisfied.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2 style="font-family:Anton;font-size:3rem;margin-bottom:20px;">
+      FILXER MADE IT
+    </h2>
+
+    <p style="margin-bottom:20px;color:#bdbdbd;">
+      Professional Mixing • Mastering • Promo Content
+    </p>
+
+    <a
+      href="https://www.instagram.com/filxermadeit/"
+      target="_blank"
+      class="insta">
+      @filxermadeit
+    </a>
+
+  </footer>
+
+</body>
+</html>
